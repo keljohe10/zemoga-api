@@ -1,3 +1,4 @@
 module.exports = {
-  getCelebrities: require('./celebrities'),
+  getCelebrities: require("./celebrities"),
+  updateCelebrities: require("./updateCelebrities"),
 };

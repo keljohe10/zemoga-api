@@ -1,12 +1,18 @@
-const bodyparser = require('body-parser');
-const express = require('express');
-const routes = require('./routes');
+const bodyparser = require("body-parser");
+const express = require("express");
+const routes = require("./routes");
 const app = express();
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'PUT, PATCH, POST, GET, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "PUT, PATCH, POST, GET, DELETE, OPTIONS"
+  );
   next();
 });
 
@@ -14,11 +20,11 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
 //routes
-app.use('/', routes);
+app.use("/", routes);
 
 //Errors middleware
 app.use((error, req, res, next) => {
-  logger.error(
+  console.error(
     JSON.stringify({
       method: req.method,
       url: req.url,

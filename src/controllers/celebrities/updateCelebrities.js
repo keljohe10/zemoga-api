@@ -1,9 +1,10 @@
 const model = require("../../models/celebrities");
+const ObjectId = require("mongodb").ObjectId;
 
 const handler = async (req, res, next) => {
   try {
     const { vote } = req.query;
-
+    const { id } = req.params;
     if (!vote) {
       throw new Error("No vote given");
     }
@@ -18,7 +19,7 @@ const handler = async (req, res, next) => {
           };
 
     await model.updateOne(
-      { name: "Cristina Fernández de Kirchner" },
+      { _id: ObjectId(id) },
       { $inc: data },
       {
         lean: true,

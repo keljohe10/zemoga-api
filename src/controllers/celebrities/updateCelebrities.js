@@ -12,11 +12,11 @@ const handler = async (req, res, next) => {
     let data =
       vote == 1
         ? {
-            "votes.positive": 1,
-          }
+          "votes.positive": 1,
+        }
         : {
-            "votes.negative": 1,
-          };
+          "votes.negative": 1,
+        };
 
     await model.updateOne(
       { _id: ObjectId(id) },
@@ -27,7 +27,7 @@ const handler = async (req, res, next) => {
       }
     );
 
-    res.status(200).send({ ok: true });
+    res.status(200).send({ successfully: true });
   } catch (error) {
     return next(error);
   }
